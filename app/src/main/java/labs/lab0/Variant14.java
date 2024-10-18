@@ -1,5 +1,6 @@
 package labs.lab0;
 
+import java.util.Arrays;
 
 public class Variant14 {
   /**
@@ -215,17 +216,17 @@ public class Variant14 {
 
       System.out.println(new Variant14().isExactlyOnePositive(3, 2, 5));
 
-      System.out.println(new Variant14().findMinAndMax(1, 2, 3));
+      System.out.println(Arrays.toString(new Variant14().findMinAndMax(1, 2, 3)));
 
-      System.out.println(new Variant14().calculateEquilateralTriangle(1, 5));
+      System.out.println(Arrays.toString(new Variant14().calculateEquilateralTriangle(1, 5)));
 
-      System.out.println(new Variant14().calculateSquaresUpToN(5));
-      
-      System.out.println(new Variant14().findMaxKForSumLessThanA(1));
+      System.out.println(Arrays.toString(new Variant14().calculateSquaresUpToN(5)));
 
-      System.out.println(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5, 6}));
+      System.out.println(Arrays.toString(new Variant14().findMaxKForSumLessThanA(1.5)));
 
-      System.out.println(new Variant14().printCorners(new int[][]{{1, 2}, {3, 4}}));
+      System.out.println(Arrays.toString(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5, 6})));
+
+      System.out.println(Arrays.toString(new Variant14().printCorners(new int[][]{{1, 2}, {3, 4}})));
 
       System.out.println("END");
   }
