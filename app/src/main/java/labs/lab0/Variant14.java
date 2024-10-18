@@ -120,7 +120,7 @@ public class Variant14 {
       int sum = 0;
 
       for (int i = 1; i <= N; i++) {
-          sum += 2 * i - 1;  // Додаємо непарне число
+          sum += 2 * i - 1;  
           squares[i - 1] = sum;
           System.out.println("Квадрат " + i + " = " + sum);
       }
@@ -160,7 +160,6 @@ public class Variant14 {
         List<Integer> evenIndexElements = new ArrayList<>();
         List<Integer> oddIndexElements = new ArrayList<>();
 
-        // Додаємо елементи до списків з парними та непарними номерами
         for (int i = 0; i < A.length; i++) {
             if ((i + 1) % 2 == 0) { // (i + 1) оскільки індекси починаються з 0
                 evenIndexElements.add(A[i]);
@@ -169,7 +168,6 @@ public class Variant14 {
             }
         }
 
-        // Об'єднуємо елементи з обох списків у один масив
         int[] result = new int[A.length];
         int index = 0;
         
@@ -223,7 +221,22 @@ public class Variant14 {
 
 
   public static void main(String... strings) {
-      System.out.println("Start of zero lab");
-      System.out.println("Done!!!");
+      System.out.println("START");
+
+      System.out.println(new Variant14().rotateDigit(123));
+
+      System.out.println(new Variant14().isExactlyOnePositive(3, 2, 5));
+
+      System.out.println(new Variant14().findMinAndMax(1, 2, 3));
+
+      System.out.println(new Variant14().calculateEquilateralTriangle(1, 5));
+
+      System.out.println(new Variant14().calculateSquaresUpToN(5));
+      
+      System.out.println(new Variant14().findMaxKForSumLessThanA(1));
+
+      System.out.println(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5}));
+
+      System.out.println("END");
   }
 }
