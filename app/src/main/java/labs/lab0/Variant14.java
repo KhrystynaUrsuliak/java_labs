@@ -1,7 +1,5 @@
 package labs.lab0;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Variant14 {
   /**
@@ -157,30 +155,20 @@ public class Variant14 {
      * @return масив з елементами в заданому порядку
      */
     public int[] rearrangeArray(int[] A) {
-        List<Integer> evenIndexElements = new ArrayList<>();
-        List<Integer> oddIndexElements = new ArrayList<>();
-
-        for (int i = 0; i < A.length; i++) {
-            if ((i + 1) % 2 == 0) { // (i + 1) оскільки індекси починаються з 0
-                evenIndexElements.add(A[i]);
-            } else {
-                oddIndexElements.add(A[i]);
-            }
-        }
-
-        int[] result = new int[A.length];
-        int index = 0;
-        
-        for (int num : evenIndexElements) {
-            result[index++] = num;
-        }
-        
-        for (int num : oddIndexElements) {
-            result[index++] = num;
-        }
-
-        return result;
-    }
+      int[] result = new int[A.length];
+      int evenIndex = 0;  
+      int oddIndex = A.length / 2;  
+  
+      for (int i = 1; i < A.length; i += 2) { 
+          result[evenIndex++] = A[i];
+      }
+  
+      for (int i = 0; i < A.length; i += 2) { 
+          result[oddIndex++] = A[i];
+      }
+  
+      return result;
+  }
 
 
   /**
@@ -235,7 +223,7 @@ public class Variant14 {
       
       System.out.println(new Variant14().findMaxKForSumLessThanA(1));
 
-      System.out.println(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5}));
+      System.out.println(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5, 6}));
 
       System.out.println(new Variant14().printCorners(new int[][]{{1, 2}, {3, 4}}));
 
