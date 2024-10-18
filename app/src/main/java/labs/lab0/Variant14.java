@@ -195,22 +195,22 @@ public class Variant14 {
       int index = 0;
 
       for (int layer = 0; layer < (M + 1) / 2; layer++) {
-          // Виведення елементів першого стовпця цього шару
+          // Виведення елементів першого стовпця 
           for (int i = layer; i < M - layer; i++) {
               result[index++] = A[i][layer];
           }
 
-          // Виведення елементів нижнього рядка цього шару (з останнього стовпця)
+          // Виведення елементів нижнього рядка (з останнього стовпця)
           for (int j = layer + 1; j < M - layer; j++) {
               result[index++] = A[M - layer - 1][j];
           }
 
-          // Виведення елементів останнього стовпця цього шару (з нижнього рядка)
+          // Виведення елементів останнього стовпця (з нижнього рядка)
           for (int i = M - layer - 2; i >= layer; i--) {
               result[index++] = A[i][M - layer - 1];
           }
 
-          // Виведення елементів верхнього рядка цього шару (з першого стовпця)
+          // Виведення елементів верхнього рядка (з першого стовпця)
           for (int j = M - layer - 2; j > layer; j--) {
               result[index++] = A[layer][j];
           }
@@ -236,6 +236,8 @@ public class Variant14 {
       System.out.println(new Variant14().findMaxKForSumLessThanA(1));
 
       System.out.println(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5}));
+
+      System.out.println(new Variant14().printCorners(new int[][]{{1, 2}, {3, 4}}));
 
       System.out.println("END");
   }
