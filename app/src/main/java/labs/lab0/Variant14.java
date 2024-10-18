@@ -222,7 +222,7 @@ public class Variant14 {
 
       System.out.println(Arrays.toString(new Variant14().calculateSquaresUpToN(5)));
 
-      System.out.println(Arrays.toString(new Variant14().findMaxKForSumLessThanA(1.5)));
+      System.out.println(Arrays.toString(new Variant14().findMaxKForSumLessThanA(2.5)));
 
       System.out.println(Arrays.toString(new Variant14().rearrangeArray(new int[]{1, 2, 3, 4, 5, 6})));
 
