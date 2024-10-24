@@ -117,11 +117,11 @@ public class Variant14 {
 
       int[] squares = new int[N];
       int sum = 0;
+      // int k = 0;
 
-      for (int i = 1; i <= N; i++) {
-          sum += 2 * i - 1;  
-          squares[i - 1] = sum;
-          System.out.println("Квадрат " + i + " = " + sum);
+      for (int i = 0; i < N; i++) {
+          sum += 2 * i + 1;  
+          squares[i] = sum;
       }
 
       return squares;
@@ -214,7 +214,7 @@ public class Variant14 {
 
       System.out.println(new Variant14().rotateDigit(123));
 
-      System.out.println(new Variant14().isExactlyOnePositive(3, 2, 5));
+      System.out.println(new Variant14().isExactlyOnePositive(3, -2, -5));
 
       System.out.println(Arrays.toString(new Variant14().findMinAndMax(1, 2, 3)));
 
