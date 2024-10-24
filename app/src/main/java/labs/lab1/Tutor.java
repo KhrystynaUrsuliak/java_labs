@@ -26,21 +26,41 @@ public class Tutor {
     return firstName;
   }
 
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
   public String getLastName() {
     return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 
   public LocalDate getBirthDate() {
     return birthDate;
   }
 
+  public void setBirthDate(LocalDate birthDate) {
+    this.birthDate = birthDate;
+  }
+
   public String getQualification() {
     return qualification;
+  }
+
+  public void setQualification(String qualification) {
+    this.qualification = qualification;
   }
 
   public double getSalary() {
     return salary;
   }
+
+  public void setSalary(double salary) {
+    this.salary = salary;
+  } 
 
   @Override
   public String toString() {
