@@ -8,6 +8,8 @@ import java.time.LocalDate;
  * The {@code Course} class represents a language course offered by the language academy. 
  * It contains details such as course name, language, level, start and end dates, and price.
  * 
+ * @version 1.0
+ * @since 2024-10-18
  */
 
 public class Course {
