@@ -22,7 +22,7 @@ public class PaymentTest {
     void setUp() {
         student = new Student("Alice", "Smith", "alice@example.com", "A1");
         course = new Course("English for Beginners", "English", "A1", LocalDate.of(2024, 1, 10), LocalDate.of(2024, 3, 20), 250.0);
-        paymentDate = new Date(); // Current date
+        paymentDate = new Date(); 
 
         payment = new Payment(student, course, "October", paymentDate, 250.0);
     }
@@ -38,7 +38,6 @@ public class PaymentTest {
 
     @Test
     void testSetters() {
-        // Create new objects to test the setters
         Student newStudent = new Student("Bob", "Johnson", "bob@example.com", "B1");
         Course newCourse = new Course("Advanced English", "English", "B1", LocalDate.of(2024, 4, 1), LocalDate.of(2024, 6, 1), 300.0);
         Date newPaymentDate = new Date(System.currentTimeMillis() - 100000); // Example of a new date

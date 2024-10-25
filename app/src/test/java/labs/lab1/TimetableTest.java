@@ -23,7 +23,6 @@ public class TimetableTest {
 
     @BeforeEach
     void setUp() {
-        // Create mock data for Group
         Course course = new Course("English for Beginners", "English", "A1", LocalDate.of(2024, 1, 10), LocalDate.of(2024, 3, 20), 250.0);
         Tutor tutor = new Tutor.TutorBuilder("John", "Doe")
                 .birthDate(LocalDate.of(1980, 5, 15))
