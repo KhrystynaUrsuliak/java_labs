@@ -78,11 +78,7 @@ public class Tutor {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Tutor tutor = (Tutor) o;
-    return Double.compare(tutor.salary, salary) == 0 &&
-    Objects.equals(firstName, tutor.firstName) &&
-    Objects.equals(lastName, tutor.lastName) &&
-    Objects.equals(birthDate, tutor.birthDate) &&
-    Objects.equals(qualification, tutor.qualification);
+    return firstName.equals(tutor.firstName) && lastName.equals(tutor.lastName) && birthDate.equals(tutor.birthDate) && qualification.equals(tutor.qualification) && salary == tutor.salary;
   }
 
   @Override
