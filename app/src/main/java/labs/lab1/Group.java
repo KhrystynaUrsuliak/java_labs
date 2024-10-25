@@ -1,6 +1,7 @@
 package labs.lab1;
 
 import java.util.Objects;
+import java.util.List;
 
 /**
  * The {@code Group} class represents a group of students for a specific course, taught by a particular tutor.
@@ -13,11 +14,13 @@ public class Group {
   private String name;
   private Course course;
   private Tutor tutor;
+  private List<Student> students;
 
-  public Group(String name, Course course, Tutor tutor) {
+  public Group(String name, Course course, Tutor tutor, List<Student> students) {
     this.name = name;
     this.course = course;
     this.tutor = tutor;
+    this.students = students;
   }
 
   public String getName() {
@@ -44,12 +47,21 @@ public class Group {
     this.tutor = tutor;
   }
 
+  public List<Student> getStudents() {
+    return students;
+  }
+
+  public void setStudents(List<Student> students) {
+    this.students = students;
+  }
+
   @Override
   public String toString() {
     return "Group{" +
     "name='" + name + '\'' +
     ", course=" + course +
     ", tutor=" + tutor +
+    ", students=" + students +
     '}';
   }
 
@@ -58,11 +70,11 @@ public class Group {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Group group = (Group) o;
-    return Objects.equals(name, group.name) && Objects.equals(course, group.course) && Objects.equals(tutor, group.tutor);
-  }
+    return name.equals(group.name) && course.equals(group.course) && tutor.equals(group.tutor) && students.equals(group.students);
+  } 
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, course, tutor);
+    return Objects.hash(name, course, tutor, students);
   }
 }
