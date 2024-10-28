@@ -1,7 +1,7 @@
 package labs.lab1;
 
 import java.util.Objects;
-
+import labs.lab1.Language;
 import java.time.LocalDate;
 
 /**
@@ -10,17 +10,18 @@ import java.time.LocalDate;
  * 
  * @version 1.0
  * @since 2024-10-18
+
  */
 
 public class Course {
   private String name;
-  private String language;
+  private Language language;
   private String level;
   private LocalDate startDate;
   private LocalDate endDate;
   private double price;
 
-  public Course(String name, String language, String level, LocalDate startDate, LocalDate endDate, double price) {
+  public Course(String name, Language language, String level, LocalDate startDate, LocalDate endDate, double price) {
     this.name = name;
     this.language = language;
     this.level = level;
@@ -37,11 +38,11 @@ public class Course {
     this.name = name;
   }
 
-  public String getLanguage() {
+  public Language getLanguage() {
     return language;
   }
 
-  public void setLanguage(String language) {
+  public void setLanguage(Language language) {
     this.language = language;
   }
 
@@ -81,7 +82,7 @@ public class Course {
   public String toString() {
     return "Course{" +
             "name='" + name + '\'' +
-            ", language='" + language + '\'' +
+            ", language=" + language +
             ", level='" + level + '\'' +
             ", startDate=" + startDate +
             ", endDate=" + endDate +
@@ -96,7 +97,7 @@ public class Course {
     Course course = (Course) o;
     return Double.compare(course.price, price) == 0 &&
             Objects.equals(name, course.name) &&
-            Objects.equals(language, course.language) &&
+            language == course.language && 
             Objects.equals(level, course.level) &&
             Objects.equals(startDate, course.startDate) &&
             Objects.equals(endDate, course.endDate);

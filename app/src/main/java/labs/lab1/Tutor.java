@@ -2,6 +2,7 @@ package labs.lab1;
 
 import java.util.Objects;
 import java.time.LocalDate;
+import labs.lab1.Language;
 
 /**
  * The {@code Tutor} class represents a tutor who teaches at the academy.
@@ -11,14 +12,14 @@ public class Tutor {
   private String firstName;
   private String lastName;
   private LocalDate birthDate;
-  private String qualification;
+  private Language language;
   private double salary;
 
   public Tutor(TutorBuilder builder) {
     this.firstName = builder.firstName;
     this.lastName = builder.lastName;
     this.birthDate = builder.birthDate;
-    this.qualification = builder.qualification;
+    this.language = builder.language;
     this.salary = builder.salary;
   }
 
@@ -46,12 +47,12 @@ public class Tutor {
     this.birthDate = birthDate;
   }
 
-  public String getQualification() {
-    return qualification;
+  public Language getLanguage() {
+    return language;
   }
 
-  public void setQualification(String qualification) {
-    this.qualification = qualification;
+  public void setLanguage(Language language) {
+    this.language = language;
   }
 
   public double getSalary() {
@@ -68,7 +69,7 @@ public class Tutor {
     "firstName='" + firstName + '\'' +
     ", lastName='" + lastName + '\'' +
     ", birthDate=" + birthDate +
-    ", qualification='" + qualification + '\'' +
+    ", language='" + language + 
     ", salary=" + salary +
     '}';
   } 
@@ -78,19 +79,23 @@ public class Tutor {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Tutor tutor = (Tutor) o;
-    return firstName.equals(tutor.firstName) && lastName.equals(tutor.lastName) && birthDate.equals(tutor.birthDate) && qualification.equals(tutor.qualification) && salary == tutor.salary;
-  }
+    return Double.compare(tutor.salary, salary) == 0 &&
+                firstName.equals(tutor.firstName) &&
+                lastName.equals(tutor.lastName) &&
+                birthDate.equals(tutor.birthDate) &&
+                language == tutor.language; 
+    }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, birthDate, qualification, salary);
+    return Objects.hash(firstName, lastName, birthDate, language, salary);
   }
 
   public static class TutorBuilder {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    private String qualification;
+    private Language language;
     private double salary;
 
     public TutorBuilder(String firstName, String lastName) {
@@ -103,8 +108,8 @@ public class Tutor {
       return this;
     }
 
-    public TutorBuilder qualification(String qualification) {
-      this.qualification = qualification;
+    public TutorBuilder language(Language language) {
+      this.language = language;
       return this;
     }
 
