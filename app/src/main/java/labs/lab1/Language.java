@@ -7,7 +7,6 @@ package labs.lab1;
  * @since 2024-10-18
  */
 
-
 public enum Language {
     ENGLISH,
     GERMAN,

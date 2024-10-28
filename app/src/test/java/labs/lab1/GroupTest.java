@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Test class for the {@code Group} class.
  */
+
 public class GroupTest {
 
     private Group group;
@@ -20,10 +21,10 @@ public class GroupTest {
 
     @BeforeEach
     void setUp() {
-        course = new Course("English for Beginners", "English", "A1", LocalDate.of(2024, 1, 10), LocalDate.of(2024, 3, 20), 250.0);
+        course = new Course("English for Beginners", Language.ENGLISH, "A1", LocalDate.of(2024, 1, 10), LocalDate.of(2024, 3, 20), 250.0);
         tutor = new Tutor.TutorBuilder("John", "Doe")
                 .birthDate(LocalDate.of(1980, 5, 15))
-                .qualification("Master of Linguistics")
+                .language(Language.ENGLISH)
                 .salary(50.0)
                 .build();
 
@@ -44,16 +45,15 @@ public class GroupTest {
 
     @Test
     void testSetters() {
-        Course newCourse = new Course("Advanced English", "English", "B1", LocalDate.of(2024, 2, 1), LocalDate.of(2024, 4, 1), 300.0);
+        Course newCourse = new Course("Advanced English", Language.ENGLISH, "B1", LocalDate.of(2024, 2, 1), LocalDate.of(2024, 4, 1), 300.0);
         Tutor newTutor = new Tutor.TutorBuilder("Jane", "Doe")
                 .birthDate(LocalDate.of(1982, 8, 25))
-                .qualification("PhD in English Literature")
+                .language(Language.ENGLISH)
                 .salary(60.0)
                 .build();
         Student student3 = new Student("Charlie", "Brown", "charlie@example.com", "B1");
         List<Student> newStudents = Arrays.asList(student3);
 
-        // Test setters
         group.setName("Group B1");
         assertEquals("Group B1", group.getName());
 

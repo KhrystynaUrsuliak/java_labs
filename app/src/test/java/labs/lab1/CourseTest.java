@@ -13,27 +13,29 @@ public class CourseTest {
     public void testCourseConstructorAndGetters() {
         LocalDate startDate = LocalDate.of(2024, 1, 10);
         LocalDate endDate = LocalDate.of(2024, 3, 20);
-        Course course = new Course("English for Beginners", "English", "A1", startDate, endDate, 250.0);
+        
+        Course course = new Course("English for Beginners", Language.ENGLISH, "A1", startDate, endDate, 250.0);
 
         assertEquals("English for Beginners", course.getName());
-        assertEquals("English", course.getLanguage());
+        assertEquals(Language.ENGLISH, course.getLanguage());  
         assertEquals("A1", course.getLevel());
         assertEquals(startDate, course.getStartDate());
         assertEquals(endDate, course.getEndDate());
-        assertEquals(250.0, course.getPrice());
+        assertEquals(250.0, course.getPrice(), 0.0001);  
     }
 
     @Test
     public void testSetters() {
         LocalDate startDate = LocalDate.of(2024, 1, 10);
         LocalDate endDate = LocalDate.of(2024, 3, 20);
-        Course course = new Course("English for Beginners", "English", "A1", startDate, endDate, 250.0);
+    
+        Course course = new Course("English for Beginners", Language.ENGLISH, "A1", startDate, endDate, 250.0);
 
         course.setName("Intermediate English");
         assertEquals("Intermediate English", course.getName());
 
-        course.setLanguage("Spanish");
-        assertEquals("Spanish", course.getLanguage());
+        course.setLanguage(Language.SPANISH);
+        assertEquals(Language.SPANISH, course.getLanguage());
 
         course.setLevel("B1");
         assertEquals("B1", course.getLevel());
@@ -47,15 +49,16 @@ public class CourseTest {
         assertEquals(newEndDate, course.getEndDate());
 
         course.setPrice(300.0);
-        assertEquals(300.0, course.getPrice());
+        assertEquals(300.0, course.getPrice(), 0.0001);  
     }
 
     @Test
     public void testEqualsAndHashCode() {
         LocalDate startDate = LocalDate.of(2024, 1, 10);
         LocalDate endDate = LocalDate.of(2024, 3, 20);
-        Course course1 = new Course("English for Beginners", "English", "A1", startDate, endDate, 250.0);
-        Course course2 = new Course("English for Beginners", "English", "A1", startDate, endDate, 250.0);
+        
+        Course course1 = new Course("English for Beginners", Language.ENGLISH, "A1", startDate, endDate, 250.0);
+        Course course2 = new Course("English for Beginners", Language.ENGLISH, "A1", startDate, endDate, 250.0);
 
         assertEquals(course1, course2);
         assertEquals(course1.hashCode(), course2.hashCode());
@@ -69,9 +72,10 @@ public class CourseTest {
     public void testToString() {
         LocalDate startDate = LocalDate.of(2024, 1, 10);
         LocalDate endDate = LocalDate.of(2024, 3, 20);
-        Course course = new Course("English for Beginners", "English", "A1", startDate, endDate, 250.0);
 
-        String expected = "Course{name='English for Beginners', language='English', level='A1', startDate=2024-01-10, endDate=2024-03-20, price=250.0}";
+        Course course = new Course("English for Beginners", Language.ENGLISH, "A1", startDate, endDate, 250.0);
+
+        String expected = "Course{name='English for Beginners', language=ENGLISH, level='A1', startDate=2024-01-10, endDate=2024-03-20, price=250.0}";
         assertEquals(expected, course.toString());
     }
 }

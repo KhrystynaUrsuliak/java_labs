@@ -2,10 +2,12 @@ package labs.lab1;
 
 import java.util.Objects;
 import java.time.LocalDate;
-import labs.lab1.Language;
 
 /**
  * The {@code Tutor} class represents a tutor who teaches at the academy.
+ * 
+ * @version 1.0
+ * @since 2024-10-18
  */
 
 public class Tutor {
@@ -65,14 +67,14 @@ public class Tutor {
 
   @Override
   public String toString() {
-    return "Tutor{" +
-    "firstName='" + firstName + '\'' +
-    ", lastName='" + lastName + '\'' +
-    ", birthDate=" + birthDate +
-    ", language='" + language + 
-    ", salary=" + salary +
-    '}';
-  } 
+      return "Tutor{" +
+              "firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", birthDate=" + birthDate +
+              ", language=" + language + 
+              ", salary=" + salary +
+              '}';
+  }
 
   @Override
   public boolean equals(Object o) {
