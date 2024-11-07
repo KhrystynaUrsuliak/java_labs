@@ -18,12 +18,32 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
-
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // This dependency is used by the application.
-    implementation(libs.guava)
+    // Hibernate Core (adjust version as necessary)
+    implementation("org.hibernate:hibernate-core:3.6.7.Final")
     
+    // Guava for additional utilities
+    implementation("com.google.guava:guava:23.0")
+
+    // Jakarta Validation API
+    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+
+    // Optional: Validation Implementation (Hibernate Validator is commonly used)
+    implementation("org.hibernate.validator:hibernate-validator:6.2.5.Final")
+
+    // Optional: Jakarta Expression Language for Hibernate Validator
+    implementation("org.glassfish:jakarta.el:3.0.3")
+
+    // Lombok (if you need it; Kotlin has built-in features that may make Lombok unnecessary)
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
+
+    implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.3")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
