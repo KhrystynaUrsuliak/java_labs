@@ -26,6 +26,10 @@ public class Course implements Comparable<Course>{
 
   private double price;
 
+  public Course() {
+  
+  }
+
   public Course(String name, Language language, String level, LocalDate startDate, LocalDate endDate, double price) {
     this.name = name;
     this.language = language;

@@ -15,6 +15,12 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    jackson = "2.18.0"
+    hibernate_validator = '8.0.1.Final'
+    expressly = '5.0.0'
+}
+
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
@@ -27,12 +33,13 @@ dependencies {
     implementation("com.google.guava:guava:23.0")
 
     // Jakarta Validation API
-    implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
-    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
-    implementation("org.glassfish:jakarta.el:4.0.2") // Required for Hibernate Validator to work with Jakarta EL
+    // implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
+    // implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+    // implementation("org.glassfish:jakarta.el:4.0.2") // Required for Hibernate Validator to work with Jakarta EL
 
-    // implementation "org.hibernate.validator:hibernate-validator:$hibernate_validator"
-    // implementation "org.glassfish.expressly:expressly:$expressly"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson"
+    implementation "org.hibernate.validator:hibernate-validator:$hibernate_validator"
+    implementation "org.glassfish.expressly:expressly:$expressly"
 
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")

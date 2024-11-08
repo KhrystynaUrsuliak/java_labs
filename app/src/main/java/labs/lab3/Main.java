@@ -34,27 +34,28 @@ public class Main {
         }
 
 
-        XMLSerializer<Course> xmlSerializer = new XMLSerializer<>(Course.class);
-        try {
-            xmlSerializer.fromEntityToFile(course, xmlFile.getPath());
-            System.out.println("Course serialized to XML.");
+    //     XMLSerializer<Course> xmlSerializer = new XMLSerializer<>(Course.class);
+    //     try {
+    //         xmlSerializer.fromEntityToFile(course, xmlFile.getPath());
+    //         // System.out.println("Course serialized to XML.");
 
-            Course deserializedXmlCourse = xmlSerializer.toEntity(xmlFile.getPath());
-            System.out.println("Deserialized XML Course: " + deserializedXmlCourse);
-        } catch (IOException e) {
-            System.out.println("Error with XML serialization: " + e.getMessage());
-        }
+    //         Course deserializedXmlCourse = xmlSerializer.toEntity(xmlFile.getPath());
+    //         System.out.println("Deserialized XML Course: " + deserializedXmlCourse);
+    //     } catch (IOException e) {
+    //         System.out.println("Error with XML serialization: " + e.getMessage());
+    //     }
 
 
-        YAMLSerializer<Course> yamlSerializer = new YAMLSerializer<>(Course.class);
-        try {
-            yamlSerializer.fromEntityToFile(course, yamlFile.getPath());
-            System.out.println("Course serialized to YAML.");
+    //     YAMLSerializer<Course> yamlSerializer = new YAMLSerializer<>(Course.class);
+    //     try {
+    //         yamlSerializer.fromEntityToFile(course, yamlFile.getPath());
+    //         System.out.println("Course serialized to YAML.");
 
-            Course deserializedYamlCourse = yamlSerializer.toEntity(yamlFile.getPath());
-            System.out.println("Deserialized YAML Course: " + deserializedYamlCourse);
-        } catch (IOException e) {
-            System.out.println("Error with YAML serialization: " + e.getMessage());
-        }
-    }
+    //         Course deserializedYamlCourse = yamlSerializer.toEntity(yamlFile.getPath());
+    //         System.out.println("Deserialized YAML Course: " + deserializedYamlCourse);
+    //     } catch (IOException e) {
+    //         System.out.println("Error with YAML serialization: " + e.getMessage());
+    //     }
+    // }
+}
 }
