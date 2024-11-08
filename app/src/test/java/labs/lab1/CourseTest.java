@@ -78,4 +78,18 @@ public class CourseTest {
         String expected = "Course{name='English for Beginners', language=ENGLISH, level='A1', startDate=2024-01-10, endDate=2024-03-20, price=250.0}";
         assertEquals(expected, course.toString());
     }
+
+    @Test
+    public void testCompareTo() {
+        LocalDate startDate = LocalDate.of(2024, 1, 10);
+        LocalDate endDate = LocalDate.of(2024, 3, 20);
+
+        Course course1 = new Course("English Basics", Language.ENGLISH, "A1", startDate, endDate, 250.0);
+        Course course2 = new Course("English Advanced", Language.ENGLISH, "A2", startDate, endDate, 300.0);
+        Course course3 = new Course("English Basics", Language.ENGLISH, "B1", startDate, endDate, 200.0);
+
+        assertTrue(course3.compareTo(course1) > 0); // "B1" is after "A1"
+        assertTrue(course1.compareTo(course2) < 0); // Names are same, prices differ
+        assertTrue(course1.compareTo(course3) < 0); // Level is lower in course1 than course3
+    }
 }

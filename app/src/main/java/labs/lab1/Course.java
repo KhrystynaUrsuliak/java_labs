@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
  */
 
-public class Course {
+public class Course implements Comparable<Course>{
   private String name;
   private Language language;
   private String level;
@@ -106,4 +106,30 @@ public class Course {
     public int hashCode() {
         return Objects.hash(name, language, level, startDate, endDate, price);
     }
+
+    @Override
+    public int compareTo(Course other) {
+      String thisLevelPrefix = this.level.substring(0, 1); // "A", "B", etc.
+      String otherLevelPrefix = other.level.substring(0, 1);
+
+      int levelPrefixComparison = thisLevelPrefix.compareTo(otherLevelPrefix);
+      if (levelPrefixComparison != 0) {
+        return levelPrefixComparison;
+      }
+
+      int thisLevelNumber = Integer.parseInt(this.level.substring(1));
+      int otherLevelNumber = Integer.parseInt(other.level.substring(1));
+
+      int levelNumberComparison = Integer.compare(thisLevelNumber, otherLevelNumber);
+      if (levelNumberComparison != 0) {
+          return levelNumberComparison;
+      }
+
+      int nameComparison = this.name.compareTo(other.name);
+      if (nameComparison != 0) {
+          return nameComparison;
+      }
+
+      return Double.compare(this.price, other.price);
+  }
 }
