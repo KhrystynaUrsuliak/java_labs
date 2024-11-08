@@ -1,8 +1,6 @@
 package labs.lab4;
 
-import labs.lab1.Language;
-import lombok.Getter;
-import lombok.Setter;
+import labs.lab4.Language;
 import lombok.EqualsAndHashCode;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -10,19 +8,17 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.PastOrPresent;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ValidationException;
 import java.util.Set;
+
 import java.util.List;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
 @EqualsAndHashCode
 public class Course {
   @NotNull(message = "Name cannot be null!")
@@ -52,6 +48,54 @@ public class Course {
     this.level = level;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.price = price;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Language getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(Language language) {
+    this.language = language;
+  }
+
+  public String getLevel() {
+    return level;
+  }
+
+  public void setLevel(String level) {
+    this.level = level;
+  }
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
     this.price = price;
   }
 
@@ -115,17 +159,21 @@ public class Course {
     public Course build() {
       var course = new Course(this.name, this.language, this.level, this.startDate, this.endDate, this.price);
 
-      try (ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<Course>> violations = validator.validate(course);
-        List<String> validationErrors = violations.stream()
-                .map(v -> "validation error in" + v.getPropertyPath() + ", value `" + v.getInvalidValue() + "`should satisfy condition: " + v.getMessage()).toList();
-        if (!violations.isEmpty()) {
-          throw new ValidationException(String.join("\n", validationErrors));
-        }
+      ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+      Validator validator = factory.getValidator();
+      Set<ConstraintViolation<Course>> violations = validator.validate(course);
 
-        return course;
-      }        
-    }
+      List<String> validationErrors = violations.stream()
+          .map(v -> "Validation error in " + v.getPropertyPath() +
+                    ", value `" + v.getInvalidValue() +
+                    "` should satisfy condition: " + v.getMessage())
+          .toList();
+
+      if (!violations.isEmpty()) {
+        throw new ValidationException(String.join("\n", validationErrors));
+      }
+
+      return course;
+    }   
   }
 }

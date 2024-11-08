@@ -29,13 +29,9 @@ dependencies {
     // Jakarta Validation API
     implementation("jakarta.validation:jakarta.validation-api:3.0.2")
 
-    // Optional: Validation Implementation (Hibernate Validator is commonly used)
-    implementation("org.hibernate.validator:hibernate-validator:6.2.5.Final")
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final' // Use the latest stable version
+    implementation 'org.glassfish:jakarta.el:4.0.2' // Required for expression language support
 
-    // Optional: Jakarta Expression Language for Hibernate Validator
-    implementation("org.glassfish:jakarta.el:3.0.3")
-
-    // Lombok (if you need it; Kotlin has built-in features that may make Lombok unnecessary)
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 

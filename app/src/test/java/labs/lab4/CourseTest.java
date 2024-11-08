@@ -1,8 +1,9 @@
 package labs.lab4;
 
 import labs.lab4.Course;
-import labs.lab1.Language;
+import labs.lab4.Language;
 import jakarta.validation.ValidationException;
+
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;

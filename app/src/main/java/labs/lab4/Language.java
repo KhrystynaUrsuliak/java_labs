@@ -1,4 +1,4 @@
-package labs.lab1;
+package labs.lab4;
 
 public enum Language {
     ENGLISH,
