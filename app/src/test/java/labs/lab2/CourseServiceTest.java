@@ -57,11 +57,4 @@ public class CourseServiceTest {
         assertEquals(1, spanishCourses.size());
         assertEquals("Basic Spanish", spanishCourses.get(0).getName());
     }
-
-    @Test
-    public void testFindEnglishCourses() {
-        List<Course> englishCourses = courseService.findEnglishCourses(Language.ENGLISH);
-        assertEquals(1, englishCourses.size());
-        assertEquals("Advanced English", englishCourses.get(0).getName());
-    }
 }

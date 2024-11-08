@@ -30,7 +30,7 @@ public class CourseService {
             .collect(Collectors.toList());
   }
 
-  public List<Course> findEnglishCourses(Language language) {
+  public List<Course> findEnglishCourses() {
     return courses.stream()
             .filter(c -> c.getLanguage() == Language.ENGLISH)
             .collect(Collectors.toList());

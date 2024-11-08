@@ -1,6 +1,5 @@
 package labs.lab4;
 
-import labs.lab4.Language;
 import lombok.EqualsAndHashCode;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -14,10 +13,9 @@ import jakarta.validation.ValidatorFactory;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ValidationException;
 import java.util.Set;
+import java.time.LocalDate;
 
 import java.util.List;
-
-import java.time.LocalDate;
 
 @EqualsAndHashCode
 public class Course {
@@ -25,7 +23,7 @@ public class Course {
   @Size(min = 1, max = 50, message = "name must be between 1 and 50 characters long.")
   private String name;
 
-  @NotNull(message = "language cannot be null!")
+  @NotNull(message="language cannot be null!")
   private Language language;
 
   @Pattern(regexp = "^[A-C][1-2]$", message = "level should be in format A1, A2, ... , C2.")
@@ -158,22 +156,26 @@ public class Course {
 
     public Course build() {
       var course = new Course(this.name, this.language, this.level, this.startDate, this.endDate, this.price);
-
+    
       ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
       Validator validator = factory.getValidator();
+      
       Set<ConstraintViolation<Course>> violations = validator.validate(course);
-
       List<String> validationErrors = violations.stream()
-          .map(v -> "Validation error in " + v.getPropertyPath() +
-                    ", value `" + v.getInvalidValue() +
-                    "` should satisfy condition: " + v.getMessage())
-          .toList();
-
-      if (!violations.isEmpty()) {
+        .map(v -> "Validation error in " + v.getPropertyPath() +
+                  ", value `" + v.getInvalidValue() +
+                  "` should satisfy condition: " + v.getMessage())
+        .toList();
+    
+      if (course.endDate != null && course.startDate != null && course.endDate.isBefore(course.startDate)) {
+        validationErrors.add("End date cannot be before start date.");
+      }
+    
+      if (!validationErrors.isEmpty()) {
         throw new ValidationException(String.join("\n", validationErrors));
       }
-
+    
       return course;
-    }   
+    }
   }
 }
