@@ -1,6 +1,5 @@
 package labs.lab4;
 
-import lombok.EqualsAndHashCode;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
@@ -16,8 +15,8 @@ import java.util.Set;
 import java.time.LocalDate;
 
 import java.util.List;
+import java.util.Objects;
 
-@EqualsAndHashCode
 public class Course {
   @NotNull(message = "Name cannot be null!")
   @Size(min = 1, max = 50, message = "name must be between 1 and 50 characters long.")
@@ -107,6 +106,24 @@ public class Course {
             ", endDate=" + endDate +
             ", price=" + price +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Course course = (Course) o;
+    return Double.compare(course.price, price) == 0 &&
+            Objects.equals(name, course.name) &&
+            language == course.language && 
+            Objects.equals(level, course.level) &&
+            Objects.equals(startDate, course.startDate) &&
+            Objects.equals(endDate, course.endDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, language, level, startDate, endDate, price);
   }
 
   public static CourseBuilder builder() {
