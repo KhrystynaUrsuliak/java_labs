@@ -2,6 +2,7 @@ package labs.lab1;
 
 import java.util.Objects;
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * The {@code Course} class represents a language course offered by the language academy. 
@@ -16,8 +17,13 @@ public class Course implements Comparable<Course>{
   private String name;
   private Language language;
   private String level;
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate startDate;
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate endDate;
+
   private double price;
 
   public Course(String name, Language language, String level, LocalDate startDate, LocalDate endDate, double price) {
@@ -48,6 +54,7 @@ public class Course implements Comparable<Course>{
   public String getLevel() {
     return level;
   }
+
 
   public void setLevel(String level) {
     this.level = level;
