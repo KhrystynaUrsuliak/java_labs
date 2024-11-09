@@ -16,6 +16,7 @@ import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Course {
   @NotNull(message = "Name cannot be null!")
@@ -173,25 +174,29 @@ public class Course {
 
     public Course build() {
       var course = new Course(this.name, this.language, this.level, this.startDate, this.endDate, this.price);
-    
+
       ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
       Validator validator = factory.getValidator();
-      
+
       Set<ConstraintViolation<Course>> violations = validator.validate(course);
       List<String> validationErrors = violations.stream()
-        .map(v -> "Validation error in " + v.getPropertyPath() +
-                  ", value `" + v.getInvalidValue() +
-                  "` should satisfy condition: " + v.getMessage())
-        .toList();
-    
+              .map(v -> "Validation error in " + v.getPropertyPath() +
+                      ", value `" + v.getInvalidValue() +
+                      "` should satisfy condition: " + v.getMessage())
+              .collect(Collectors.toList()); 
+
+      if (course.startDate != null && course.startDate.isAfter(LocalDate.now())) {
+        validationErrors.add("Start date must be a date in the past or in the present.");
+      }
+
       if (course.endDate != null && course.startDate != null && course.endDate.isBefore(course.startDate)) {
         validationErrors.add("End date cannot be before start date.");
       }
-    
+
       if (!validationErrors.isEmpty()) {
         throw new ValidationException(String.join("\n", validationErrors));
       }
-    
+
       return course;
     }
   }

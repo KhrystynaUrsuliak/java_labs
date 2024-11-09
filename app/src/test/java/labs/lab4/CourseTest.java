@@ -31,17 +31,16 @@ public class CourseTest {
 
   @Test
   public void testNameNotNull() {
-    courseBuilder.name("null");
+    courseBuilder.name(null);
     ValidationException exception = assertThrows(ValidationException.class, () -> courseBuilder.build());
-    // assertEquals("Name cannot be null!", exception.getMessage());
-    // assertTrue(exception.getMessage().contains("Name cannot be null"));
+    assertTrue(exception.getMessage().contains("Name cannot be null!"));
   }
 
   @Test
   public void testNameSizeConstraint() {
     courseBuilder.name("");
     ValidationException exception = assertThrows(ValidationException.class, () -> courseBuilder.build());
-    System.out.println("Exception message: " + exception.getMessage()); // Debugging line
+    System.out.println();
     assertTrue(exception.getMessage().contains("name must be between 1 and 50 characters long."));
   }
 

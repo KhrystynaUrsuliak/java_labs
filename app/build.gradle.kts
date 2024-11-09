@@ -15,11 +15,13 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    jackson = "2.18.0"
-    hibernate_validator = '8.0.1.Final'
-    expressly = '5.0.0'
-}
+// ext {
+    // jackson = "2.18.0"
+    // hibernate_validator = '8.0.1.Final'
+    // expressly = '5.0.0'
+// }
+
+val expresslyVersion = "5.0.0"
 
 dependencies {
     // Use JUnit Jupiter for testing.
@@ -37,9 +39,13 @@ dependencies {
     // implementation("jakarta.validation:jakarta.validation-api:3.0.2")
     // implementation("org.glassfish:jakarta.el:4.0.2") // Required for Hibernate Validator to work with Jakarta EL
 
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson"
-    implementation "org.hibernate.validator:hibernate-validator:$hibernate_validator"
-    implementation "org.glassfish.expressly:expressly:$expressly"
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")
+
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+
+    implementation("org.glassfish.expressly:expressly:$expresslyVersion")
 
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
@@ -49,6 +55,18 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.3")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
+
+    // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    implementation("com.mysql:mysql-connector-j:8.1.0")
+
+    // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
+    implementation("org.mongodb:mongodb-driver-sync:5.2.0")
+
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation("com.zaxxer:HikariCP:6.0.0")
+
+    // https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator
+    implementation("com.fasterxml.uuid:java-uuid-generator:5.1.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
