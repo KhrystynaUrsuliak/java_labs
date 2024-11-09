@@ -22,28 +22,28 @@ public class Main {
         File xmlFile = new File("course.xml");
         File yamlFile = new File("course.yaml");
 
-        JSONSerializer<Course> jsonSerializer = new JSONSerializer<>(Course.class);
+        // JSONSerializer<Course> jsonSerializer = new JSONSerializer<>(Course.class);
+        // try {
+        //     // jsonSerializer.fromEntityToFile(course, jsonFile.getPath());
+        //     // System.out.println("Course serialized to JSON.");
+
+        //     Course deserializedJsonCourse = jsonSerializer.toEntity(new String(java.nio.file.Files.readAllBytes(jsonFile.toPath())));
+        //     System.out.println("Deserialized JSON Course: " + deserializedJsonCourse);
+        // } catch (IOException e) {
+        //     System.out.println("Error with JSON serialization: " + e.getMessage());
+        // }
+
+
+        XMLSerializer<Course> xmlSerializer = new XMLSerializer<>(Course.class);
         try {
-            jsonSerializer.fromEntityToFile(course, jsonFile.getPath());
-            System.out.println("Course serialized to JSON.");
+            // xmlSerializer.fromEntityToFile(course, xmlFile.getPath());
+            // // System.out.println("Course serialized to XML.");
 
-            Course deserializedJsonCourse = jsonSerializer.toEntity(jsonFile.getPath());
-            System.out.println("Deserialized JSON Course: " + deserializedJsonCourse);
+            Course deserializedXmlCourse = xmlSerializer.toEntity(xmlFile.getPath());
+            System.out.println("Deserialized XML Course: " + deserializedXmlCourse);
         } catch (IOException e) {
-            System.out.println("Error with JSON serialization: " + e.getMessage());
+            System.out.println("Error with XML serialization: " + e.getMessage());
         }
-
-
-    //     XMLSerializer<Course> xmlSerializer = new XMLSerializer<>(Course.class);
-    //     try {
-    //         xmlSerializer.fromEntityToFile(course, xmlFile.getPath());
-    //         // System.out.println("Course serialized to XML.");
-
-    //         Course deserializedXmlCourse = xmlSerializer.toEntity(xmlFile.getPath());
-    //         System.out.println("Deserialized XML Course: " + deserializedXmlCourse);
-    //     } catch (IOException e) {
-    //         System.out.println("Error with XML serialization: " + e.getMessage());
-    //     }
 
 
     //     YAMLSerializer<Course> yamlSerializer = new YAMLSerializer<>(Course.class);

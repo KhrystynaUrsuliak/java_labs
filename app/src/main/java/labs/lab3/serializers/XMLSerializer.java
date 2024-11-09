@@ -3,6 +3,8 @@ package labs.lab3.serializers;
 import labs.lab3.Serialization;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,8 +27,9 @@ public class XMLSerializer<T> implements Serialization<T> {
     }
 
     @Override
-    public T toEntity(String object) throws JsonProcessingException {
-        return mapper.readValue(object, clazz);
+    public T toEntity(String filePath) throws IOException {
+       String content = new String(Files.readAllBytes(Paths.get(filePath)));
+       return mapper.readValue(content, clazz);
     }
 
     @Override
@@ -62,11 +65,13 @@ public class XMLSerializer<T> implements Serialization<T> {
 
     @JacksonXmlRootElement(localName = "List")
     public static class GenericListWrapper<T> {
-        private static final String ITEM_NAME = "items";
+        private static final String ITEM_NAME = "item";
 
         @JacksonXmlElementWrapper(useWrapping = false)
         @JacksonXmlProperty(localName = ITEM_NAME)
         private List<T> items;
+
+        public GenericListWrapper() {}
 
         public GenericListWrapper(List<T> items) {
             this.items = items;
@@ -79,5 +84,5 @@ public class XMLSerializer<T> implements Serialization<T> {
         public void setItems(List<T> items) {
             this.items = items;
         }
-    } 
+    }
 }

@@ -4,6 +4,8 @@ import labs.lab3.Serialization;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -37,13 +39,14 @@ public class JSONSerializer<T> implements Serialization<T> {
     }
 
     @Override
-    public String fromEntityList(List<T> objectCollection) {
-        return null;
+    public String fromEntityList(List<T> objectCollection) throws JsonProcessingException {
+      return mapper.writeValueAsString(objectCollection);
     }
 
     @Override
-    public List<T> toEntityListFromFile(String fileName) {
-        return null;
+    public List<T> toEntityListFromFile(String fileName) throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(fileName)));
+        return mapper.readValue(content, new TypeReference<List<T>>() {});
     }
 
     @Override
